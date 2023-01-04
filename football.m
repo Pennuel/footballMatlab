@@ -2,5 +2,5 @@
 
 
 footballplayground()
-p = person(0,3,"b");
+p = person(0,3,"g");
 
