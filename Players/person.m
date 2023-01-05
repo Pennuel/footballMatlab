@@ -5,8 +5,15 @@ classdef person
     %body is a rounded rectangle
 
     properties
+        % color
         color_body
         color_head
+        %position of the head
+        x_position
+        y_position
+        %structure
+        body
+        head
     end
 
     methods
@@ -35,7 +42,7 @@ classdef person
             person.color_head = headcolor;
             display_person(person,start_x,start_y)
         end
-
+        
         % the function can be used to make the player appear in a different
         % location
         function display_person(person,x,y)
@@ -50,7 +57,7 @@ classdef person
                 height = 2;
                 width = 4.5;
             %create a rectangle that is rounded for show as the body.
-                rectangle(Position=[x_position_rectangle y_position_rectangle width height],FaceColor=person.color_body,Curvature=1)
+                person.body = rectangle(Position=[x_position_rectangle y_position_rectangle width height],FaceColor=person.color_body,Curvature=1);
 
             %Create the head with is a circle
             %Assign the circle coordinates and radius
@@ -58,7 +65,11 @@ classdef person
                 x_circle = x;
                 head_radius=1;
             % Create the head
-                circle(x_circle,y_circle,head_radius,person.color_head);
+               person.head = circle(x_circle,y_circle,head_radius,person.color_head);
+        end
+
+        function clear_person(person)
+             
         end
     end
 end
