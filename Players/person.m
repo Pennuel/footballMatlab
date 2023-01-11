@@ -8,12 +8,11 @@ classdef person
         % color
         color_body
         color_head
-        %position of the head
+        %position
         x_position
         y_position
         %structure
         body
-        head
     end
 
     methods
@@ -46,10 +45,12 @@ classdef person
         % the function can be used to make the player appear in a different
         % location
         function display_person(person,x,y)
+            person.x_position = x
+            person.y_position = y
             %position of the body relative to the head that the position of
             %the player.
-                x_position_rectangle = x-2.2;
-                y_position_rectangle = y-2.2;
+                x_position_rectangle = person.x_position-2.2;
+                y_position_rectangle =  person.y_position-2.2;
 
             %Create the body of the person.
             % details the body is first created first so that it overlays with the body
@@ -62,14 +63,14 @@ classdef person
             %Create the head with is a circle
             %Assign the circle coordinates and radius
                 y_circle = y;
-                x_circle = x;
+                x_circle = person.x_position;
                 head_radius=1;
             % Create the head
-               person.head = circle(x_circle,y_circle,head_radius,person.color_head);
+               circle(x_circle,y_circle,head_radius,person.color_head)
         end
-
         function clear_person(person)
-             
+            
+            delete(person.body);
         end
     end
 end

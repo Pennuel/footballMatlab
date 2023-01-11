@@ -5,6 +5,5 @@ x_circle = r * cos(th) + x;
 y_circle = r * sin(th) + y;
 circles = plot(x_circle, y_circle);
 fill(x_circle, y_circle, c)
-axis equal
 hold off
 end

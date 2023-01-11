@@ -52,8 +52,6 @@ new_rectangle_width = 30;
 % Draw the new rectangle on the bottom of line A, facing down
 rectangle('Position', [distance_from_left_new, length - distance_from_top - rectangle_length + 15 - new_rectangle_length, new_rectangle_width, new_rectangle_length], 'EdgeColor', 'white', 'FaceColor', [0, 0.5, 0]);
 
-
-
 % Set the distance from the left of the new rectangle to the left edge of the figure
 distance_from_left_new = 25;
 
