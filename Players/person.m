@@ -5,8 +5,14 @@ classdef person
     %body is a rounded rectangle
 
     properties
+        % color
         color_body
         color_head
+        %position
+        x_position
+        y_position
+        %structure
+        body
     end
 
     methods
@@ -35,14 +41,16 @@ classdef person
             person.color_head = headcolor;
             display_person(person,start_x,start_y)
         end
-
+        
         % the function can be used to make the player appear in a different
         % location
         function display_person(person,x,y)
+            person.x_position = x
+            person.y_position = y
             %position of the body relative to the head that the position of
             %the player.
-                x_position_rectangle = x-2.2;
-                y_position_rectangle = y-2.2;
+                x_position_rectangle = person.x_position-2.2;
+                y_position_rectangle =  person.y_position-2.2;
 
             %Create the body of the person.
             % details the body is first created first so that it overlays with the body
@@ -50,15 +58,19 @@ classdef person
                 height = 2;
                 width = 4.5;
             %create a rectangle that is rounded for show as the body.
-                rectangle(Position=[x_position_rectangle y_position_rectangle width height],FaceColor=person.color_body,Curvature=1)
+                person.body = rectangle(Position=[x_position_rectangle y_position_rectangle width height],FaceColor=person.color_body,Curvature=1);
 
             %Create the head with is a circle
             %Assign the circle coordinates and radius
                 y_circle = y;
-                x_circle = x;
+                x_circle = person.x_position;
                 head_radius=1;
             % Create the head
-                circle(x_circle,y_circle,head_radius,person.color_head);
+               circle(x_circle,y_circle,head_radius,person.color_head)
+        end
+        function clear_person(person)
+            
+            delete(person.body);
         end
     end
 end
